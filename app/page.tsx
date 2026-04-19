@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/navbar"
-import { Particles } from "@/components/particles"
-import { Hero } from "@/components/hero"
+import { SmoothScrollVideoHero } from "@/components/smooth-scroll-video-hero"
 import { About } from "@/components/about"
 import { AboutCollege } from "@/components/about-college"
 import { Prizes } from "@/components/prizes"
@@ -13,14 +12,11 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-background overflow-x-clip">
-      {/* Particle starfield background */}
-      <Particles />
-
       {/* Navigation */}
       <Navbar />
 
       {/* Hero Section */}
-      <Hero />
+      <SmoothScrollVideoHero />
 
       {/* About Section */}
       <About />
