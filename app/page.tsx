@@ -2,8 +2,6 @@ import { Navbar } from "@/components/navbar"
 import { SmoothScrollVideoHero } from "@/components/smooth-scroll-video-hero"
 import { About } from "@/components/about"
 import { AboutCollege } from "@/components/about-college"
-import { Prizes } from "@/components/prizes"
-import { Gallery } from "@/components/gallery"
 import { Countdown } from "@/components/countdown"
 import { Team } from "@/components/team"
 import { Footer } from "@/components/footer"
@@ -23,12 +21,6 @@ export default function Home() {
 
       {/* About College Section */}
       <AboutCollege />
-
-      {/* Prizes Section */}
-      <Prizes />
-
-      {/* Gallery Section */}
-      <Gallery />
 
       {/* Countdown & Register Section */}
       <Countdown />

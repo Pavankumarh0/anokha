@@ -36,7 +36,7 @@ export function SmoothScrollVideoHero() {
       {/* Video — muted + playsInline required for autoplay on all browsers */}
       <video
         ref={videoRef}
-        src="/Fort_entrance_camera_202604191003.mp4"
+        src="/Camera_movement_through_202604191055.mp4"
         muted
         playsInline
         loop
@@ -51,18 +51,18 @@ export function SmoothScrollVideoHero() {
       {/* Hero content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
 
-        <p className="mb-3 text-xs font-semibold tracking-[0.45em] uppercase text-red-400/80 drop-shadow-md sm:text-sm">
+        <p className="mb-6 text-base font-semibold tracking-[0.45em] uppercase text-red-400/80 drop-shadow-md sm:text-lg md:text-xl">
           THE OXFORD COLLEGE OF ENGINEERING
         </p>
 
         <h1
-          className="font-bold uppercase tracking-widest text-yellow-400 drop-shadow-[0_0_35px_rgba(250,204,21,0.85)]"
-          style={{ fontSize: "clamp(3.5rem, 11vw, 10rem)" }}
+          className="font-[family-name:var(--font-yatra)] text-yellow-400 leading-none drop-shadow-[0_0_40px_rgba(250,204,21,0.55)]"
+          style={{ fontSize: "clamp(3rem,12vw,110px)" }}
         >
-          ANOKHA
+          ANOKHA 2026
         </h1>
 
-        <p className="mt-5 text-base font-semibold tracking-[0.3em] uppercase text-white/70 drop-shadow-md sm:text-xl md:text-2xl">
+        <p className="mt-8 text-base font-semibold tracking-[0.3em] uppercase text-white/70 drop-shadow-md sm:text-xl md:text-2xl">
           A NEW RHYTHM OF CELEBRATION
         </p>
 

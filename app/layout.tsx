@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Plus_Jakarta_Sans, Space_Mono } from 'next/font/google'
+import { Space_Grotesk, Plus_Jakarta_Sans, Space_Mono, Yatra_One } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -17,6 +17,12 @@ const spaceMono = Space_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: '--font-space-mono'
+})
+
+const yatraOne = Yatra_One({
+  subsets: ["latin"],
+  weight: "400",
+  variable: '--font-yatra',
 })
 
 export const metadata: Metadata = {
@@ -37,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-[#050816] scroll-smooth">
-      <body className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} ${spaceMono.variable} font-sans antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} ${spaceMono.variable} ${yatraOne.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

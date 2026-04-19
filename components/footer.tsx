@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube, ArrowUpRight } from "lucide-react"
+import { ArrowRight, MapPin, Phone, Facebook, Twitter, Instagram, Linkedin, Youtube, ArrowUpRight } from "lucide-react"
 
 export function Footer() {
   return (
@@ -34,6 +34,31 @@ export function Footer() {
             <a href="mailto:info@theoxford.edu" className="inline-flex items-center gap-2 text-xl font-medium hover:text-accent transition-colors w-fit text-white">
               info@theoxford.edu <ArrowRight className="w-5 h-5" />
             </a>
+
+            {/* Student Coordinators Box */}
+            <div className="rounded-xl border border-yellow-400/30 bg-yellow-400/5 p-5">
+              <h4 className="font-bold text-yellow-400 mb-4 uppercase text-xs tracking-widest">STUDENT COORDINATORS</h4>
+              <div className="flex flex-col gap-4">
+                <a href="tel:8310417276" className="flex items-center gap-3 group">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-400/30 shrink-0 group-hover:bg-yellow-400/20 transition-colors">
+                    <Phone className="w-3.5 h-3.5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <p className="text-white text-sm font-semibold">Jeevan</p>
+                    <p className="text-muted-foreground text-xs tracking-wider">83104 17276</p>
+                  </div>
+                </a>
+                <a href="tel:8618776781" className="flex items-center gap-3 group">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-400/30 shrink-0 group-hover:bg-yellow-400/20 transition-colors">
+                    <Phone className="w-3.5 h-3.5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <p className="text-white text-sm font-semibold">Tarun Anand</p>
+                    <p className="text-muted-foreground text-xs tracking-wider">86187 76781</p>
+                  </div>
+                </a>
+              </div>
+            </div>
 
             {/* Two column layout for Address and Socials */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12 mt-2">

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Trophy, Medal, Award } from "lucide-react"
+import { Trophy } from "lucide-react"
 
 const prizes = [
   {
@@ -14,29 +14,7 @@ const prizes = [
     iconColor: "text-primary",
     glowColor: "rgba(255, 215, 0, 0.4)",
     isMain: true,
-    orderClass: "order-1 md:order-2",
-  },
-  {
-    tier: "Silver",
-    place: "Runner Up",
-    icon: Medal,
-    description: "Exclusive Tech Gear & Premium Access",
-    bgColor: "bg-[#1a1a2e]",
-    borderColor: "border-gray-400",
-    iconColor: "text-gray-300",
-    glowColor: "rgba(192, 192, 192, 0.3)",
-    orderClass: "order-2 md:order-1",
-  },
-  {
-    tier: "Bronze",
-    place: "Special Prize",
-    icon: Award,
-    description: "Innovation Award & Merch",
-    bgColor: "bg-[#0f1a0f]",
-    borderColor: "border-[#CD7F32]",
-    iconColor: "text-[#CD7F32]",
-    glowColor: "rgba(205, 127, 50, 0.3)",
-    orderClass: "order-3 md:order-3",
+    orderClass: "order-1",
   },
 ]
 
