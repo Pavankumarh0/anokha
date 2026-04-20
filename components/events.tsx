@@ -101,7 +101,7 @@ function EventCard({ event }: EventCardProps) {
 
         {/* Icon */}
         <div
-          className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-4 transition-transform group-hover:scale-110 ${
+          className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-4 transition-transform md:group-hover:scale-110 ${
             isGreen ? "bg-green-400/10 border border-green-400/20" : isTechnical ? "bg-secondary/10 border border-secondary/20" : "bg-yellow-400/10 border border-yellow-400/20"
           }`}
         >
@@ -109,7 +109,7 @@ function EventCard({ event }: EventCardProps) {
         </div>
 
         <div className="flex-1">
-          <h3 className={`text-xl font-bold mb-2 font-[family-name:var(--font-space-grotesk)] transition-colors ${isGreen ? "text-green-400" : "text-white group-hover:text-primary"}`}>
+          <h3 className={`text-xl font-bold mb-2 font-[family-name:var(--font-space-grotesk)] transition-colors ${isGreen ? "text-green-400" : "text-white md:group-hover:text-primary"}`}>
             {event.title}
           </h3>
           <p className="text-sm text-muted-foreground/70 leading-relaxed mb-6">
@@ -119,7 +119,7 @@ function EventCard({ event }: EventCardProps) {
 
         {/* Action Link */}
         <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-4">
-          <span className={`text-[9px] font-black tracking-[0.2em] ${textColor} uppercase group-hover:underline`}>
+          <span className={`text-[9px] font-black tracking-[0.2em] ${textColor} uppercase md:group-hover:underline`}>
             {event.poster ? "View Poster →" : "Coming Soon"}
           </span>
           <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${isGreen ? "bg-green-400" : isTechnical ? "bg-secondary" : "bg-yellow-400"}`} />
