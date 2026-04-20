@@ -43,14 +43,14 @@ function FloatingPaths({ position }: { position: number }) {
 const technicalEvents = [
   { id: "EVT-01", title: "Watt's the Link?", icon: "⚡", desc: "Electrical connections challenge", type: "technical" as const, poster: "/event_posters/watts the link.jpeg" },
   { id: "EVT-02", title: "Hunt.exe", icon: "💻", desc: "Cyber treasure hunt", type: "technical" as const, poster: "/event_posters/Hunt.exe.jpg" },
-  { id: "EVT-03", title: "DevKreeda: The Game Jam", icon: "🎮", desc: "Build a game in 24hrs", type: "technical" as const, poster: null },
+  { id: "EVT-03", title: "DevKreeda: The Game Jam", icon: "🎮", desc: "Build a game in 24hrs", type: "technical" as const, poster: "/event_posters/dev kreeda.jpeg" },
   { id: "EVT-04", title: "MindRush", icon: "🧠", desc: "Technical quiz showdown", type: "technical" as const, poster: "/event_posters/mind rush.jpeg" },
   { id: "EVT-05", title: "Startup Battlefront", icon: "🚀", desc: "Pitch your startup idea", type: "technical" as const, poster: "/event_posters/startup battlefront.jpg" },
   { id: "EVT-06", title: "Rana Yantram", icon: "🤖", desc: "Robot football war", type: "technical" as const, poster: "/event_posters/ranayantra.png" },
   { id: "EVT-07", title: "KALPANA – App Prototype", icon: "📱", desc: "Design the next big app", type: "technical" as const, poster: "/event_posters/kalpana.png" },
   { id: "EVT-08", title: "Chain of Minds", icon: "🔗", desc: "Collaborative problem solving", type: "technical" as const, poster: "/event_posters/chain of minds.jpeg" },
   { id: "EVT-09", title: "Green Pitch", icon: "🦾", desc: "Build and showcase your bot", type: "technical" as const, poster: "/event_posters/green pitch.jpeg" },
-  { id: "EVT-10", title: "Poster Presentation", icon: "📋", desc: "Present your research", type: "technical" as const, poster: null },
+  { id: "EVT-10", title: "Poster Presentation", icon: "📋", desc: "Present your research", type: "technical" as const, poster: "/event_posters/poster_presentation.jpeg" },
   { id: "EVT-11", title: "Reverse Engineering", icon: "🔧", desc: "Tear it apart, understand it", type: "technical" as const, poster: "/event_posters/reverse-engineering.jpg" },
 ]
 
