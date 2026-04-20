@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { GlowCard } from "./ui/glow-card"
 
@@ -40,32 +41,32 @@ function FloatingPaths({ position }: { position: number }) {
 }
 
 const technicalEvents = [
-  { id: "EVT-01", title: "Watt's the Link?", icon: "⚡", desc: "Electrical connections challenge", type: "technical" as const },
-  { id: "EVT-02", title: "Hunt.exe", icon: "💻", desc: "Cyber treasure hunt", type: "technical" as const },
-  { id: "EVT-03", title: "DevKreeda: The Game Jam", icon: "🎮", desc: "Build a game in 24hrs", type: "technical" as const },
-  { id: "EVT-04", title: "MindRush", icon: "🧠", desc: "Technical quiz showdown", type: "technical" as const },
-  { id: "EVT-05", title: "Startup Battlefront", icon: "🚀", desc: "Pitch your startup idea", type: "technical" as const },
-  { id: "EVT-06", title: "Rana Yantram", icon: "🤖", desc: "Robot football war", type: "technical" as const },
-  { id: "EVT-07", title: "KALPANA – App Prototype", icon: "📱", desc: "Design the next big app", type: "technical" as const },
-  { id: "EVT-08", title: "Chain of Minds", icon: "🔗", desc: "Collaborative problem solving", type: "technical" as const },
-  { id: "EVT-09", title: "Robot Design", icon: "🦾", desc: "Build and showcase your bot", type: "technical" as const },
-  { id: "EVT-10", title: "Poster Presentation", icon: "📋", desc: "Present your research", type: "technical" as const },
-  { id: "EVT-11", title: "Reverse Engineering", icon: "🔧", desc: "Tear it apart, understand it", type: "technical" as const },
+  { id: "EVT-01", title: "Watt's the Link?", icon: "⚡", desc: "Electrical connections challenge", type: "technical" as const, poster: "/event_posters/watts the link.jpeg" },
+  { id: "EVT-02", title: "Hunt.exe", icon: "💻", desc: "Cyber treasure hunt", type: "technical" as const, poster: "/event_posters/Hunt.exe.jpg" },
+  { id: "EVT-03", title: "DevKreeda: The Game Jam", icon: "🎮", desc: "Build a game in 24hrs", type: "technical" as const, poster: null },
+  { id: "EVT-04", title: "MindRush", icon: "🧠", desc: "Technical quiz showdown", type: "technical" as const, poster: "/event_posters/mind rush.jpeg" },
+  { id: "EVT-05", title: "Startup Battlefront", icon: "🚀", desc: "Pitch your startup idea", type: "technical" as const, poster: "/event_posters/startup battlefront.jpg" },
+  { id: "EVT-06", title: "Rana Yantram", icon: "🤖", desc: "Robot football war", type: "technical" as const, poster: "/event_posters/ranayantra.png" },
+  { id: "EVT-07", title: "KALPANA – App Prototype", icon: "📱", desc: "Design the next big app", type: "technical" as const, poster: "/event_posters/kalpana.png" },
+  { id: "EVT-08", title: "Chain of Minds", icon: "🔗", desc: "Collaborative problem solving", type: "technical" as const, poster: "/event_posters/chain of minds.jpeg" },
+  { id: "EVT-09", title: "Green Pitch", icon: "🦾", desc: "Build and showcase your bot", type: "technical" as const, poster: "/event_posters/green pitch.jpeg" },
+  { id: "EVT-10", title: "Poster Presentation", icon: "📋", desc: "Present your research", type: "technical" as const, poster: null },
+  { id: "EVT-11", title: "Reverse Engineering", icon: "🔧", desc: "Tear it apart, understand it", type: "technical" as const, poster: "/event_posters/reverse-engineering.jpg" },
 ]
 
 const nonTechnicalEvents = [
-  { id: "NTE-01", title: "Sense & Surprise", icon: "🎲", desc: "Mystery challenge", type: "non-technical" as const },
-  { id: "NTE-02", title: "The End Game", icon: "♟️", desc: "Ultimate strategy showdown", type: "non-technical" as const },
-  { id: "NTE-03", title: "KshanaCinema – Short Film", icon: "🎬", desc: "60-second story", type: "non-technical" as const },
-  { id: "NTE-04", title: "Decepta: Trust Nothing", icon: "🕵️", desc: "Deception game", type: "non-technical" as const },
-  { id: "NTE-05", title: "Mukha-Nakha", icon: "🎨", desc: "Face painting - wearable art", type: "non-technical" as const },
-  { id: "NTE-06", title: "Galactic Gambit", icon: "🌌", desc: "Space strategy game", type: "non-technical" as const },
-  { id: "NTE-07", title: "Mafia: Trust No One", icon: "🃏", desc: "Social deduction", type: "non-technical" as const },
-  { id: "NTE-08", title: "Logo Designing", icon: "✏️", desc: "Brand it in 90 mins", type: "non-technical" as const },
-  { id: "NTE-09", title: "Photography", icon: "📷", desc: "Capture the moment", type: "non-technical" as const },
-  { id: "NTE-10", title: "Hasya-Krida", icon: "🎤", desc: "Roast the crowd", type: "non-technical" as const },
-  { id: "NTE-11", title: "Vyuha Sphere: Debate", icon: "🗣️", desc: "Argue your truth", type: "non-technical" as const },
-  { id: "NTE-12", title: "Painting", icon: "🖌️", desc: "Canvas storytelling", type: "non-technical" as const },
+  { id: "NTE-01", title: "Sense & Surprise", icon: "🎲", desc: "Mystery challenge", type: "non-technical" as const, poster: "/event_posters/sense and suprise.jpeg" },
+  { id: "NTE-02", title: "The End Game", icon: "♟️", desc: "Ultimate strategy showdown", type: "non-technical" as const, poster: "/event_posters/the endgame.jpeg" },
+  { id: "NTE-03", title: "KshanaCinema – Short Film", icon: "🎬", desc: "60-second story", type: "non-technical" as const, poster: "/event_posters/kshana-cinim a.jpeg" },
+  { id: "NTE-04", title: "Decepta: Trust Nothing", icon: "🕵️", desc: "Deception game", type: "non-technical" as const, poster: "/event_posters/decepta- trust nothing.jpeg" },
+  { id: "NTE-05", title: "Mukha-Nakha", icon: "🎨", desc: "Face painting - wearable art", type: "non-technical" as const, poster: "/event_posters/mukha-nakha.jpg" },
+  { id: "NTE-06", title: "Galactic Gambit", icon: "🌌", desc: "Space strategy game", type: "non-technical" as const, poster: "/event_posters/Galactic Gambit .png" },
+  { id: "NTE-07", title: "Mafia: Trust No One", icon: "🃏", desc: "Social deduction", type: "non-technical" as const, poster: "/event_posters/Mafia - trust no one.jpeg" },
+  { id: "NTE-08", title: "Logo Designing", icon: "✏️", desc: "Brand it in 90 mins", type: "non-technical" as const, poster: "/event_posters/ecoemblem.jpeg" },
+  { id: "NTE-09", title: "Photography", icon: "📷", desc: "Capture the moment", type: "non-technical" as const, poster: "/event_posters/photography.png" },
+  { id: "NTE-10", title: "Hasya-Krida", icon: "🎤", desc: "Roast the crowd", type: "non-technical" as const, poster: "/event_posters/hasya-krida.png" },
+  { id: "NTE-11", title: "Vyuha Sphere: Debate", icon: "🗣️", desc: "Argue your truth", type: "non-technical" as const, poster: "/event_posters/vuya sphere.png" },
+  { id: "NTE-12", title: "Painting", icon: "🖌️", desc: "Canvas storytelling", type: "non-technical" as const, poster: "/event_posters/painting.png" },
 ]
 
 const allEvents = [...technicalEvents, ...nonTechnicalEvents]
@@ -75,12 +76,18 @@ type EventCardProps = {
 }
 
 function EventCard({ event }: EventCardProps) {
+  const router = useRouter()
   const isTechnical = event.type === "technical"
-  const glowColor = isTechnical ? "orange" : "yellow"
-  const textColor = isTechnical ? "text-secondary" : "text-yellow-400"
+  const isGreen = 'green' in event && event.green === true
+  const glowColor = isGreen ? "green" : isTechnical ? "orange" : "yellow"
+  const textColor = isGreen ? "text-green-400" : isTechnical ? "text-secondary" : "text-yellow-400"
 
   return (
-    <GlowCard glowColor={glowColor} className="bg-[#0A0F1E]/95 group overflow-hidden">
+    <GlowCard
+      glowColor={glowColor}
+      className={`bg-[#0A0F1E]/95 group overflow-hidden ${event.poster ? "cursor-pointer" : ""}`}
+      onClick={event.poster ? () => router.push(`/events/${event.id}`) : undefined}
+    >
       <div className="flex flex-col flex-1 p-2">
         {/* Event Meta Badge */}
         <div className="flex justify-between items-start mb-6">
@@ -95,14 +102,14 @@ function EventCard({ event }: EventCardProps) {
         {/* Icon */}
         <div
           className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-4 transition-transform group-hover:scale-110 ${
-            isTechnical ? "bg-secondary/10 border border-secondary/20" : "bg-yellow-400/10 border border-yellow-400/20"
+            isGreen ? "bg-green-400/10 border border-green-400/20" : isTechnical ? "bg-secondary/10 border border-secondary/20" : "bg-yellow-400/10 border border-yellow-400/20"
           }`}
         >
           {event.icon}
         </div>
 
         <div className="flex-1">
-          <h3 className="text-xl font-bold text-white mb-2 font-[family-name:var(--font-space-grotesk)] group-hover:text-primary transition-colors">
+          <h3 className={`text-xl font-bold mb-2 font-[family-name:var(--font-space-grotesk)] transition-colors ${isGreen ? "text-green-400" : "text-white group-hover:text-primary"}`}>
             {event.title}
           </h3>
           <p className="text-sm text-muted-foreground/70 leading-relaxed mb-6">
@@ -112,10 +119,10 @@ function EventCard({ event }: EventCardProps) {
 
         {/* Action Link */}
         <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-4">
-          <span className={`text-[9px] font-black tracking-[0.2em] ${textColor} uppercase group-hover:underline cursor-pointer`}>
-            View Details →
+          <span className={`text-[9px] font-black tracking-[0.2em] ${textColor} uppercase group-hover:underline`}>
+            {event.poster ? "View Poster →" : "Coming Soon"}
           </span>
-          <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${isTechnical ? "bg-secondary" : "bg-yellow-400"}`} />
+          <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${isGreen ? "bg-green-400" : isTechnical ? "bg-secondary" : "bg-yellow-400"}`} />
         </div>
       </div>
     </GlowCard>
@@ -125,8 +132,8 @@ function EventCard({ event }: EventCardProps) {
 export function Events() {
   const [activeTab, setActiveTab] = useState<"all" | "technical" | "non-technical">("all")
 
-  const filteredEvents = activeTab === "all" 
-    ? allEvents 
+  const filteredEvents = activeTab === "all"
+    ? allEvents
     : allEvents.filter(e => e.type === activeTab)
 
   return (
@@ -216,6 +223,7 @@ export function Events() {
           </AnimatePresence>
         </div>
       </div>
+
     </section>
   )
 }

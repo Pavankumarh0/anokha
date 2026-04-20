@@ -7,6 +7,7 @@ interface GlowCardProps {
   className?: string;
   glowColor?: 'blue' | 'purple' | 'green' | 'red' | 'orange' | 'yellow';
   customSize?: boolean;
+  onClick?: () => void;
 }
 
 const glowColorMap = {
@@ -73,6 +74,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
   className = '',
   glowColor = 'blue',
   customSize = false,
+  onClick,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -125,6 +127,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
         ref={cardRef}
         data-glow
         style={inlineStyles}
+        onClick={onClick}
         className={`rounded-2xl relative grid grid-rows-[1fr_auto] shadow-[0_1rem_2rem_-1rem_black] p-4 gap-4 backdrop-blur-[5px] ${!customSize ? 'h-full' : ''} ${className}`}
       >
         <div data-glow />
