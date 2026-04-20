@@ -102,6 +102,20 @@ export function Footer() {
           
         </div>
       </div>
+      {/* Developer Credit */}
+      <div className="border-t border-white/5 mt-12 pt-6 text-center text-xs text-muted-foreground/50">
+        <p>
+          Made with ❤️ by{" "}
+          <a
+            href="https://www.instagram.com/pavankumarh0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-white transition-colors inline-flex items-center gap-1"
+          >
+            <Instagram className="w-3 h-3" /> Pavan Kumar H
+          </a>
+        </p>
+      </div>
     </footer>
   )
 }
