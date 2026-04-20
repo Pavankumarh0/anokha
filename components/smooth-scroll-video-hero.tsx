@@ -11,20 +11,18 @@ export function SmoothScrollVideoHero() {
     const video = videoRef.current
     if (!video) return
 
-    const onReady = () => {
-      video.playbackRate = 1
+    const play = () => {
       video.play().catch(() => {
-        // Autoplay blocked (rare with muted video) — retry on first interaction
         const retry = () => { video.play(); document.removeEventListener("click", retry) }
         document.addEventListener("click", retry, { once: true })
       })
     }
 
-    // Fire as soon as metadata is available; if already loaded, call directly
-    if (video.readyState >= 1) {
-      onReady()
+    // Wait until enough data is buffered to play without stalling
+    if (video.readyState >= 4) {
+      play()
     } else {
-      video.addEventListener("loadedmetadata", onReady, { once: true })
+      video.addEventListener("canplaythrough", play, { once: true })
     }
 
     return () => { video.pause() }
@@ -36,12 +34,13 @@ export function SmoothScrollVideoHero() {
       {/* Video — muted + playsInline required for autoplay on all browsers */}
       <video
         ref={videoRef}
-        src="/Camera_movement_through_202604191055.mp4"
+        src="/Fort_entrance_camera_202604191003.mp4"
         muted
+        autoPlay
         playsInline
         loop
         preload="auto"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover [will-change:transform] [transform:translateZ(0)]"
       />
 
       {/* Depth gradients */}
