@@ -2,7 +2,42 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import ElectricBorder from "./ui/electric-border"
+import { GlowCard } from "./ui/glow-card"
+
+function FloatingPaths({ position }: { position: number }) {
+  const paths = Array.from({ length: 36 }, (_, i) => ({
+    id: i,
+    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${380 - i * 5 * position} -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${152 - i * 5 * position} ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${684 - i * 5 * position} ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
+    width: 0.5 + i * 0.03,
+  }))
+
+  return (
+    <div className="absolute inset-0 pointer-events-none">
+      <svg className="w-full h-full" viewBox="0 0 696 316" fill="none">
+        {paths.map((path) => (
+          <motion.path
+            key={path.id}
+            d={path.d}
+            stroke="rgba(250,204,21,1)"
+            strokeWidth={path.width}
+            strokeOpacity={0.04 + path.id * 0.008}
+            initial={{ pathLength: 0.3, opacity: 0.6 }}
+            animate={{
+              pathLength: 1,
+              opacity: [0.3, 0.6, 0.3],
+              pathOffset: [0, 1, 0],
+            }}
+            transition={{
+              duration: 20 + Math.random() * 10,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
+          />
+        ))}
+      </svg>
+    </div>
+  )
+}
 
 const technicalEvents = [
   { id: "EVT-01", title: "Watt's the Link?", icon: "⚡", desc: "Electrical connections challenge", type: "technical" as const },
@@ -41,21 +76,15 @@ type EventCardProps = {
 
 function EventCard({ event }: EventCardProps) {
   const isTechnical = event.type === "technical"
-  const electricColor = isTechnical ? "#FF7A18" : "#00EAFF"
-  const textColor = isTechnical ? "text-secondary" : "text-accent"
+  const glowColor = isTechnical ? "orange" : "yellow"
+  const textColor = isTechnical ? "text-secondary" : "text-yellow-400"
 
   return (
-    <ElectricBorder
-      color={electricColor}
-      speed={0.8}
-      chaos={0.1}
-      borderRadius={16}
-      className="w-full h-full"
-    >
-      <div className="bg-[#0A0F1E]/95 backdrop-blur-md p-6 relative group overflow-hidden h-full flex flex-col">
+    <GlowCard glowColor={glowColor} className="bg-[#0A0F1E]/95 group overflow-hidden">
+      <div className="flex flex-col flex-1 p-2">
         {/* Event Meta Badge */}
         <div className="flex justify-between items-start mb-6">
-          <div className={`px-2 py-0.5 rounded border ${isTechnical ? "border-secondary/30 bg-secondary/10 text-secondary" : "border-accent/30 bg-accent/10 text-accent"} text-[9px] font-bold tracking-tighter uppercase`}>
+          <div className={`px-2 py-0.5 rounded border ${isTechnical ? "border-secondary/30 bg-secondary/10 text-secondary" : "border-yellow-400/30 bg-yellow-400/10 text-yellow-400"} text-[9px] font-bold tracking-tighter uppercase`}>
             {isTechnical ? "Technical" : "Non-Technical"}
           </div>
           <span className={`text-[10px] font-mono ${textColor} opacity-60 tracking-widest`}>
@@ -63,38 +92,33 @@ function EventCard({ event }: EventCardProps) {
           </span>
         </div>
 
-        <div className="flex flex-col flex-1">
-          {/* Icon */}
-          <div
-            className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-4 transition-transform group-hover:scale-110 ${
-              isTechnical ? "bg-secondary/10 border border-secondary/20" : "bg-accent/10 border border-accent/20"
-            }`}
-          >
-            {event.icon}
-          </div>
+        {/* Icon */}
+        <div
+          className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-4 transition-transform group-hover:scale-110 ${
+            isTechnical ? "bg-secondary/10 border border-secondary/20" : "bg-yellow-400/10 border border-yellow-400/20"
+          }`}
+        >
+          {event.icon}
+        </div>
 
-          <div className="flex-1">
-            {/* Title */}
-            <h3 className="text-xl font-bold text-white mb-2 font-[family-name:var(--font-space-grotesk)] group-hover:text-primary transition-colors">
-              {event.title}
-            </h3>
+        <div className="flex-1">
+          <h3 className="text-xl font-bold text-white mb-2 font-[family-name:var(--font-space-grotesk)] group-hover:text-primary transition-colors">
+            {event.title}
+          </h3>
+          <p className="text-sm text-muted-foreground/70 leading-relaxed mb-6">
+            {event.desc}
+          </p>
+        </div>
 
-            {/* Description */}
-            <p className="text-sm text-muted-foreground/70 leading-relaxed mb-6">
-              {event.desc}
-            </p>
-          </div>
-
-          {/* Action Link */}
-          <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-4">
-            <span className={`text-[9px] font-black tracking-[0.2em] ${textColor} uppercase group-hover:underline cursor-pointer`}>
-              Initialize Protocol →
-            </span>
-            <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${isTechnical ? "bg-secondary" : "bg-accent"}`}></div>
-          </div>
+        {/* Action Link */}
+        <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-4">
+          <span className={`text-[9px] font-black tracking-[0.2em] ${textColor} uppercase group-hover:underline cursor-pointer`}>
+            View Details →
+          </span>
+          <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${isTechnical ? "bg-secondary" : "bg-yellow-400"}`} />
         </div>
       </div>
-    </ElectricBorder>
+    </GlowCard>
   )
 }
 
@@ -106,7 +130,9 @@ export function Events() {
     : allEvents.filter(e => e.type === activeTab)
 
   return (
-    <section id="events" className="relative py-20 md:py-32">
+    <section id="events" className="relative py-20 md:py-32 overflow-hidden">
+      <FloatingPaths position={1} />
+      <FloatingPaths position={-1} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -115,15 +141,15 @@ export function Events() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-1.5 border border-accent/20 rounded-full bg-accent/5 mb-6">
-            <p className="text-[10px] font-mono text-accent tracking-[0.3em] uppercase">Status: Matrix Online</p>
+          <div className="inline-block px-4 py-1.5 border border-yellow-400/20 rounded-full bg-yellow-400/5 mb-6">
+            <p className="text-[10px] font-semibold text-yellow-400 tracking-[0.3em] uppercase">ANOKHA 2026</p>
           </div>
           <h2 className="text-4xl md:text-7xl font-black mb-6 font-[family-name:var(--font-space-grotesk)] tracking-tight">
-            <span className="text-white">EVENT </span>
-            <span className="text-accent italic">UNIVERSE</span>
+            <span className="text-white">EXPLORE </span>
+            <span className="text-yellow-400 italic">EVENTS</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Operational protocols initialized. Filter the matrix or view the complete simulation.
+            From technical challenges to creative showdowns — find your stage at ANOKHA 2026.
           </p>
         </motion.div>
 
@@ -138,7 +164,7 @@ export function Events() {
                   : "text-muted-foreground hover:text-white"
               }`}
             >
-              ALL SYSTEMS
+              ALL EVENTS
             </button>
             <button
               onClick={() => setActiveTab("technical")}
@@ -154,7 +180,7 @@ export function Events() {
               onClick={() => setActiveTab("non-technical")}
               className={`px-6 py-2.5 rounded-lg font-bold text-xs transition-all duration-300 ${
                 activeTab === "non-technical"
-                  ? "bg-accent text-black shadow-[0_0_20px_rgba(0,234,255,0.3)]"
+                  ? "bg-yellow-400 text-black shadow-[0_0_20px_rgba(255,215,0,0.3)]"
                   : "text-muted-foreground hover:text-white"
               }`}
             >

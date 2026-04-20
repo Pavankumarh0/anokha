@@ -33,7 +33,7 @@ function calculateTimeLeft(): TimeLeft {
 function TimeUnit({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-card border border-accent/20 rounded-lg p-4 md:p-6 min-w-[70px] md:min-w-[100px]">
+      <div className="bg-card border border-yellow-400/20 rounded-lg p-4 md:p-6 min-w-[70px] md:min-w-[100px]">
         <motion.span
           key={value}
           initial={{ y: -20, opacity: 0 }}
@@ -76,21 +76,21 @@ export function Countdown() {
     >
       {/* Gradient edge glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* System Status */}
+        {/* Label */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-card/50 border border-accent/30 rounded-full mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/5 border border-yellow-400/30 rounded-full mb-8"
         >
-          <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-          <span className="text-xs font-mono text-accent uppercase tracking-wider">
-            System Initialization Imminent
+          <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+          <span className="text-xs font-semibold text-yellow-400 uppercase tracking-wider">
+            The Countdown Begins
           </span>
         </motion.div>
 

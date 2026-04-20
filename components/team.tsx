@@ -36,19 +36,19 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
-      whileHover={{ y: -4, borderColor: "#00EAFF" }}
-      className="bg-card rounded-xl p-6 border border-accent/15 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,234,255,0.1)]"
+      whileHover={{ y: -4, borderColor: "#FFD700" }}
+      className="bg-card rounded-xl p-6 border border-yellow-400/15 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,215,0,0.12)]"
     >
       {/* Avatar */}
-      <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-accent/30 to-accent/10 border border-accent/30 flex items-center justify-center mb-4">
-        <span className="text-lg font-bold text-accent">{member.initials}</span>
+      <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-yellow-400/30 to-yellow-400/10 border border-yellow-400/30 flex items-center justify-center mb-4">
+        <span className="text-lg font-bold text-yellow-400">{member.initials}</span>
       </div>
 
       {/* Name */}
       <h3 className="font-bold text-foreground text-sm mb-1">{member.name}</h3>
 
       {/* Role */}
-      <p className="text-xs text-accent uppercase tracking-wider">{member.role}</p>
+      <p className="text-xs text-yellow-400 uppercase tracking-wider">{member.role}</p>
     </motion.div>
   )
 }
@@ -68,7 +68,7 @@ function TeamSection({
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="text-center text-sm font-mono text-accent uppercase tracking-[0.2em] mb-8"
+        className="text-center text-sm font-mono text-yellow-400 uppercase tracking-[0.2em] mb-8"
       >
         {title}
       </motion.h3>
@@ -103,7 +103,7 @@ export function Team() {
             <span className="text-primary">ANOKHA</span>
           </h2>
           <p className="text-muted-foreground">
-            The visionaries and architects engineering the orbital pulse.
+            The people who make ANOKHA 2026 happen.
           </p>
         </motion.div>
 

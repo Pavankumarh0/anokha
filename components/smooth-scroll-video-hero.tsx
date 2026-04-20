@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
@@ -18,14 +19,27 @@ export function SmoothScrollVideoHero() {
       })
     }
 
-    // Wait until enough data is buffered to play without stalling
-    if (video.readyState >= 4) {
-      play()
-    } else {
-      video.addEventListener("canplaythrough", play, { once: true })
+    const start = () => {
+      video.preload = "auto"
+      if (video.readyState >= 4) {
+        play()
+      } else {
+        video.addEventListener("canplaythrough", play, { once: true })
+        video.load()
+      }
     }
 
-    return () => { video.pause() }
+    // Defer video loading until after page is interactive to avoid blocking main thread
+    if (document.readyState === "complete") {
+      start()
+    } else {
+      window.addEventListener("load", start, { once: true })
+    }
+
+    return () => {
+      window.removeEventListener("load", start)
+      video.pause()
+    }
   }, [])
 
   return (
@@ -36,10 +50,9 @@ export function SmoothScrollVideoHero() {
         ref={videoRef}
         src="/Fort_entrance_camera_202604191003.mp4"
         muted
-        autoPlay
         playsInline
         loop
-        preload="auto"
+        preload="none"
         className="absolute inset-0 h-full w-full object-cover [will-change:transform] [transform:translateZ(0)]"
       />
 
@@ -54,12 +67,14 @@ export function SmoothScrollVideoHero() {
           THE OXFORD COLLEGE OF ENGINEERING
         </p>
 
-        <h1
-          className="font-[family-name:var(--font-yatra)] text-yellow-400 leading-none drop-shadow-[0_0_40px_rgba(250,204,21,0.55)]"
-          style={{ fontSize: "clamp(3rem,12vw,110px)" }}
-        >
-          ANOKHA 2026
-        </h1>
+        <Image
+          src="/anokha.png"
+          alt="ANOKHA 2026"
+          width={600}
+          height={180}
+          className="drop-shadow-[0_0_40px_rgba(250,204,21,0.55)] w-[clamp(260px,55vw,600px)] h-auto"
+          priority
+        />
 
         <p className="mt-8 text-base font-semibold tracking-[0.3em] uppercase text-white/70 drop-shadow-md sm:text-xl md:text-2xl">
           A NEW RHYTHM OF CELEBRATION
