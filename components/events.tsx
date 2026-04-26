@@ -61,7 +61,7 @@ const nonTechnicalEvents = [
   { id: "NTE-04", title: "Decepta: Trust Nothing", icon: "🕵️", desc: "Deception game", type: "non-technical" as const, poster: "/event_posters/decepta- trust nothing.jpeg" },
   { id: "NTE-05", title: "Mukha-Nakha", icon: "🎨", desc: "Face painting - wearable art", type: "non-technical" as const, poster: "/event_posters/mukha-nakha.jpg" },
   { id: "NTE-06", title: "Galactic Gambit", icon: "🌌", desc: "Space strategy game", type: "non-technical" as const, poster: "/event_posters/Galactic Gambit .png" },
-  { id: "NTE-07", title: "Mafia: Trust No One", icon: "🃏", desc: "Social deduction", type: "non-technical" as const, poster: "/event_posters/Mafia - trust no one.jpeg" },
+  { id: "NTE-07", title: "Mafia: Trust No One", icon: "🃏", desc: "Social deduction", type: "non-technical" as const, poster: "/event_posters/trsut-no-one.jpeg" },
   { id: "NTE-08", title: "Logo Designing", icon: "✏️", desc: "Brand it in 90 mins", type: "non-technical" as const, poster: "/event_posters/ecoemblem.jpeg" },
   { id: "NTE-09", title: "Photography", icon: "📷", desc: "Capture the moment", type: "non-technical" as const, poster: "/event_posters/photography.png" },
   { id: "NTE-10", title: "Hasya-Krida", icon: "🎤", desc: "Roast the crowd", type: "non-technical" as const, poster: "/event_posters/hasya-krida1.png" },

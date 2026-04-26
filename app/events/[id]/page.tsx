@@ -21,7 +21,7 @@ const eventPosters: Record<string, { title: string; desc: string; poster: string
   "NTE-04": { title: "Decepta: Trust Nothing", desc: "Deception game", poster: "/event_posters/decepta- trust nothing.jpeg" },
   "NTE-05": { title: "Mukha-Nakha", desc: "Face painting - wearable art", poster: "/event_posters/mukha-nakha.jpg" },
   "NTE-06": { title: "Galactic Gambit", desc: "Space strategy game", poster: "/event_posters/Galactic Gambit .png" },
-  "NTE-07": { title: "Mafia: Trust No One", desc: "Social deduction", poster: "/event_posters/Mafia - trust no one.jpeg" },
+  "NTE-07": { title: "Mafia: Trust No One", desc: "Social deduction", poster: "/event_posters/trsut-no-one.jpeg" },
   "NTE-08": { title: "Logo Designing", desc: "Brand it in 90 mins", poster: "/event_posters/ecoemblem.jpeg" },
   "NTE-09": { title: "Photography", desc: "Capture the moment", poster: "/event_posters/photography.png" },
   "NTE-10": { title: "Hasya-Krida", desc: "Roast the crowd", poster: "/event_posters/hasya-krida1.png" },
